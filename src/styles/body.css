@@ -1,0 +1,50 @@
+@keyframes scroll-up {
+    0% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(-100%);
+    }
+  }
+  
+  .scrolling-text-container {
+    height: 325px;
+    overflow: hidden;
+    padding: 0 10px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .update-message {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .update-date {
+    font-style: italic;
+    color: gray;
+  }
+  
+  .update-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5px;
+  }
+  
+  /* Slower scroll by increasing animation duration */
+  .scrolling-text-container > div {
+    animation: scroll-up 50s linear infinite; /* Adjust duration to 15s */
+  }
+  

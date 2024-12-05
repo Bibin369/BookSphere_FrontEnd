@@ -1,0 +1,18 @@
+.custom-input {
+    border: 2px solid #ccc !important;
+    transition: border-color 0.3s ease;
+  }
+  
+  .custom-input:hover {
+    border-color: #007bff !important;
+  }
+  
+  .custom-input:focus {
+    border-color: #0056b3 !important;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5) !important;
+  }
+
+  .card-body .custom-input {
+    border: 2px solid #ccc;
+  }
+  
