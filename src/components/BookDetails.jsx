@@ -4,6 +4,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/BookDetails.css";
 import Header from "./Header";
+import Footer from "./Footer";
 
 const BookDetails = () => {
   const { id } = useParams(); // Get book ID from URL
@@ -169,6 +170,7 @@ const BookDetails = () => {
           </div>
         </div>
       )}
+      <Footer />
     </div>
   );
 };

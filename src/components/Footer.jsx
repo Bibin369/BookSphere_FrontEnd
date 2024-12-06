@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '23vh' }}>
       {/* Main content area */}
       <Box sx={{ flexGrow: 1 }}>
         {/* Main content goes here */}
@@ -23,13 +23,13 @@ const Footer = () => {
 
           {/* Footer Links */}
           <Box sx={{ display: 'flex', justifyContent: 'center', gap: 3 }}>
-            <Link to="/about" style={{ textDecoration: 'none', color: 'black' }}>
+            <Link to="#" style={{ textDecoration: 'none', color: 'black' }}>
               <Typography variant="body2">About</Typography>
             </Link>
-            <Link to="/contact" style={{ textDecoration: 'none', color: 'black' }}>
+            <Link to="#" style={{ textDecoration: 'none', color: 'black' }}>
               <Typography variant="body2">Contact</Typography>
             </Link>
-            <Link to="/privacy" style={{ textDecoration: 'none', color: 'black' }}>
+            <Link to="#" style={{ textDecoration: 'none', color: 'black' }}>
               <Typography variant="body2">Privacy Policy</Typography>
             </Link>
           </Box>

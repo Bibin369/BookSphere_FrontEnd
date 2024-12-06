@@ -90,84 +90,90 @@ const Body = () => {
                 <li>
                   <div className="update-item">
                     <span className="update-message">
-                      Update 1: New feature added to the system!
+                      Quote: "A room without books is like a body without a
+                      soul." – Marcus Tullius Cicero
                     </span>
-                    <span className="update-date">Dec 5, 2024 10:00</span>
+                    <span className="update-date">Dec 6, 2024 11:00</span>
                   </div>
                 </li>
                 <li>
                   <div className="update-item">
                     <span className="update-message">
-                      Update 2: Maintenance scheduled for tomorrow.
+                      Quote: "Books are a uniquely portable magic." – Stephen
+                      King
                     </span>
-                    <span className="update-date">Dec 5, 2024 09:00</span>
+                    <span className="update-date">Dec 6, 2024 11:05</span>
                   </div>
                 </li>
                 <li>
                   <div className="update-item">
                     <span className="update-message">
-                      Update 3: New blog post on the homepage!
+                      Quote: "Reading is a conversation. All books talk. But a
+                      good book listens as well." – Mark Haddon
                     </span>
-                    <span className="update-date">Dec 4, 2024 15:30</span>
+                    <span className="update-date">Dec 6, 2024 11:10</span>
                   </div>
                 </li>
                 <li>
                   <div className="update-item">
                     <span className="update-message">
-                      Update 4: Performance improvements deployed.
+                      Quote: "A book is a dream that you hold in your hand." –
+                      Neil Gaiman
                     </span>
-                    <span className="update-date">Dec 4, 2024 14:00</span>
+                    <span className="update-date">Dec 6, 2024 11:15</span>
                   </div>
                 </li>
                 <li>
                   <div className="update-item">
                     <span className="update-message">
-                      Update 5: Security patch released for the system.
+                      Quote: "The only thing you absolutely have to know is the
+                      location of the library." – Albert Einstein
                     </span>
-                    <span className="update-date">Dec 5, 2024 08:30</span>
+                    <span className="update-date">Dec 6, 2024 11:20</span>
                   </div>
                 </li>
                 <li>
                   <div className="update-item">
                     <span className="update-message">
-                      Update 6: New version of the mobile app now available for
-                      download.
+                      Quote: "Books are mirrors: you only see in them what you
+                      already have inside you." – Carlos Ruiz Zafón
                     </span>
-                    <span className="update-date">Dec 5, 2024 07:45</span>
+                    <span className="update-date">Dec 6, 2024 11:25</span>
                   </div>
                 </li>
                 <li>
                   <div className="update-item">
                     <span className="update-message">
-                      Update 7: Bug fix applied to the user registration
-                      process.
+                      Quote: "So many books, so little time." – Frank Zappa
                     </span>
-                    <span className="update-date">Dec 4, 2024 16:20</span>
+                    <span className="update-date">Dec 6, 2024 11:30</span>
                   </div>
                 </li>
                 <li>
                   <div className="update-item">
                     <span className="update-message">
-                      Update 8: New user interface update for the dashboard
-                      released.
+                      Quote: "The world was hers for the reading." – Betty
+                      Smith, A Tree Grows in Brooklyn
                     </span>
-                    <span className="update-date">Dec 4, 2024 13:00</span>
+                    <span className="update-date">Dec 6, 2024 11:35</span>
                   </div>
                 </li>
                 <li>
                   <div className="update-item">
                     <span className="update-message">
-                      Update 9: Data backup completed successfully.
+                      Quote: "Books are the bees which carry the quickening
+                      pollen from one to another mind." – James Russell Lowell
                     </span>
-                    <span className="update-date">Dec 4, 2024 12:15</span>
+                    <span className="update-date">Dec 6, 2024 11:40</span>
                   </div>
                 </li>
                 <li>
                   <div className="update-item">
                     <span className="update-message">
-                      Update 10: New API endpoints for payment processing added.
+                      Quote: "If you don’t like to read, you haven’t found the
+                      right book." – J.K. Rowling
                     </span>
-                    <span className="update-date">Dec 3, 2024 18:00</span>
+                    <span className="update-date">Dec 6, 2024 11:45</span>
                   </div>
                 </li>
               </ul>
