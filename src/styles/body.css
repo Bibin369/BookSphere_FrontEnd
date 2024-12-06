@@ -1,50 +1,65 @@
+/* Ensure scrolling text container is properly styled */
+.scrolling-text-container {
+  height: 325px;
+  overflow: hidden;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Apply slow scrolling with an increased duration */
+.scrolling-text-container > div {
+  animation: scroll-up 1000s linear infinite; /* Extremely slow scroll */
+}
+
+/* Keyframes for scrolling effect */
 @keyframes scroll-up {
-    0% {
-      transform: translateY(100%);
-    }
-    100% {
-      transform: translateY(-100%);
-    }
+  0% {
+    transform: translateY(100%); /* Start off the bottom */
   }
-  
-  .scrolling-text-container {
-    height: 325px;
-    overflow: hidden;
-    padding: 0 10px;
+  100% {
+    transform: translateY(-100%); /* Move to the top */
   }
-  
-  ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  li {
-    margin: 10px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .update-message {
-    font-weight: bold;
-    margin-right: 10px;
-  }
-  
-  .update-date {
-    font-style: italic;
-    color: gray;
-  }
-  
-  .update-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 5px;
-  }
-  
-  /* Slower scroll by increasing animation duration */
-  .scrolling-text-container > div {
-    animation: scroll-up 50s linear infinite; /* Adjust duration to 15s */
-  }
-  
+}
+
+/* Styling for each list item for proper alignment */
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 10px; /* Add spacing between list items */
+}
+
+/* Ensure each list item is aligned */
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px; /* Adjust spacing between updates */
+  padding: 5px 0;
+}
+
+/* Style the update message */
+.update-message {
+  font-weight: bold;
+  margin-right: 10px;
+  text-align: left;
+  flex: 1; /* Ensures it takes available space */
+}
+
+/* Style the update date */
+.update-date {
+  font-style: italic;
+  color: gray;
+  text-align: right;
+  flex-shrink: 0; /* Keeps the date fixed on the right */
+}
+
+/* Style for each update item to ensure proper space */
+.update-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5px;
+}
