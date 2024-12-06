@@ -10,6 +10,8 @@ const BookDetails = () => {
   const navigate = useNavigate(); // For navigation
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [showModal, setShowModal] = useState(false); // State to show the modal
+  const [imageUrl, setImageUrl] = useState(""); // State to hold the image URL input
 
   useEffect(() => {
     const fetchBookDetails = async () => {
@@ -29,6 +31,38 @@ const BookDetails = () => {
 
     fetchBookDetails();
   }, [id]);
+
+  // Handle opening the modal
+  const handleUploadClick = () => {
+    setShowModal(true);
+  };
+
+  // Handle closing the modal
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(`http://localhost:8080/book/uploadPhoto/${id}`, {
+        photoUrl: imageUrl,
+      });
+      if (response.data.status === "success") {
+        // Successfully uploaded the image, update the book state with the new image
+        setBook((prevBook) => ({ ...prevBook, coverPhoto: imageUrl }));
+        handleCloseModal(); // Close the modal after upload
+  
+        // Reload the page to show the updated cover photo
+        window.location.reload();
+      } else {
+        console.error("Error uploading photo:", response);
+      }
+    } catch (error) {
+      console.error("Error uploading photo:", error);
+    }
+  };
 
   if (loading) {
     return (
@@ -53,6 +87,11 @@ const BookDetails = () => {
     );
   }
 
+  // Check if book has a cover photo, otherwise use a placeholder
+  const coverImage = book.photoUrl
+    ? book.photoUrl
+    : "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg";
+
   return (
     <div>
       <Header />
@@ -60,6 +99,14 @@ const BookDetails = () => {
         <div className="card book-card shadow-lg">
           <div className="card-body">
             <h2 className="card-title text-center mb-4">{book.title}</h2>
+            <div className="text-center mb-4">
+              <img
+                src={coverImage}
+                alt={`${book.title} cover`}
+                className="img-fluid rounded"
+                style={{ maxHeight: "300px", objectFit: "cover" }}
+              />
+            </div>
             <p className="card-text">
               <strong>Author:</strong> {book.author}
             </p>
@@ -75,9 +122,53 @@ const BookDetails = () => {
                 Back to Home
               </button>
             </div>
+            <div className="text-center mt-4">
+              <button className="btn btn-secondary" onClick={handleUploadClick}>
+                Upload Photo
+              </button>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* Modal for uploading photo */}
+      {showModal && (
+        <div className="modal show" style={{ display: "block" }} onClick={handleCloseModal}>
+          <div className="modal-dialog" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Upload Book Cover Photo</h5>
+                <button type="button" className="close" onClick={handleCloseModal}>
+                  <span>&times;</span>
+                </button>
+              </div>
+              <div className="modal-body">
+                <form onSubmit={handleSubmit}>
+                  <div className="form-group">
+                    <label htmlFor="photoUrl">Image URL</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="photoUrl"
+                      value={imageUrl}
+                      onChange={(e) => setImageUrl(e.target.value)}
+                      placeholder="Enter image URL"
+                    />
+                  </div>
+                  <div className="modal-footer">
+                    <button type="button" className="btn btn-secondary" onClick={handleCloseModal}>
+                      Close
+                    </button>
+                    <button type="submit" className="btn btn-primary">
+                      Submit
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
