@@ -1,0 +1,35 @@
+.book-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .book-card .card-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .book-card .card-text {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  .book-card .btn {
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  
+  .book-card:hover {
+    transform: translateY(-3px);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  body {
+    background-color: #eef2f7;
+  }
+  
