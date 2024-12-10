@@ -16,3 +16,23 @@
     border: 2px solid #ccc;
   }
   
+
+  /* Make borders of input fields visible */
+input.form-control,
+select.form-select {
+  border: 2px solid #ccc;
+  transition: border-color 0.3s ease;
+}
+
+/* Highlight border on mouse hover */
+input.form-control:hover,
+select.form-select:hover {
+  border-color: #007bff; /* Change to your desired color */
+}
+
+/* Highlight border on focus */
+input.form-control:focus,
+select.form-select:focus {
+  border-color: #28a745; /* Change to your desired color */
+  outline: none;
+}

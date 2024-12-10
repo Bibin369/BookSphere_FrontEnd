@@ -80,7 +80,7 @@ const BookDetails = () => {
   return (
     <div>
       <Header />
-      <div className="container mt-5">
+      <div className={`container mt-5 ${showModal ? "blurred" : ""}`}>
         <div className="card book-card shadow-lg">
           <div className="card-body">
             <h2 className="card-title text-center mb-4">{book.title}</h2>
@@ -103,8 +103,8 @@ const BookDetails = () => {
               {new Date(book.publicationDate).toLocaleDateString("en-GB")}
             </p>
             <div className="text-center mt-4">
-              <button className="btn btn-primary btn-lg" onClick={() => navigate("/")}>
-                Back to Home
+              <button className="btn btn-primary btn-lg" onClick={() => navigate("/viewAll")}>
+                Back to List
               </button>
             </div>
             <div className="text-center mt-4">

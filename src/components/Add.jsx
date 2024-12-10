@@ -30,7 +30,7 @@ const Add = () => {
     } else if (bookStatus === 'failed') {
       setSnackbar({
         open: true,
-        message: `Failed to add book: ${bookError}`,
+        message: `Failed to add book`,
         severity: 'error',
       });
     }
