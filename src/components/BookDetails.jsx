@@ -16,7 +16,7 @@ const BookDetails = () => {
   const { book, status, error } = useSelector((state) => state.bookDetails);
 
   const [showModal, setShowModal] = useState(false); // State to show the modal
-  const [imageUrl, setImageUrl] = useState(""); // State to hold the image URL input
+  const [file, setFile] = useState(null); // State to hold the file input
 
   // Fetch book details when the component mounts
   useEffect(() => {
@@ -31,10 +31,21 @@ const BookDetails = () => {
     setShowModal(false);
   };
 
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile); // Update file state
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(uploadBookPhoto({ id, imageUrl }));
-    setShowModal(false); // Close the modal
+    if (file) {
+      const formData = new FormData();
+      formData.append("file", file); // Append the file to FormData
+
+      // Dispatch the upload action
+      dispatch(uploadBookPhoto({ id, formData }));
+      setShowModal(false); // Close the modal
+    }
   };
 
   if (status === "loading") {
@@ -74,8 +85,13 @@ const BookDetails = () => {
   }
 
   const coverImage = book.photoUrl
-    ? book.photoUrl
-    : "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg";
+  ? `/images/upload/directory/${book.photoUrl.split('/').pop()}`
+  : "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg";
+
+
+
+
+
 
   return (
     <div>
@@ -130,14 +146,13 @@ const BookDetails = () => {
               <div className="modal-body">
                 <form onSubmit={handleSubmit}>
                   <div className="form-group">
-                    <label htmlFor="photoUrl">Image URL</label>
+                    <label htmlFor="file">Choose Image</label>
                     <input
-                      type="text"
+                      type="file"
                       className="form-control"
-                      id="photoUrl"
-                      value={imageUrl}
-                      onChange={(e) => setImageUrl(e.target.value)}
-                      placeholder="Enter image URL"
+                      id="file"
+                      onChange={handleFileChange}
+                      required
                     />
                   </div>
                   <div className="modal-footer">

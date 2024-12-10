@@ -19,16 +19,19 @@ export const fetchBookDetails = createAsyncThunk(
   }
 );
 
+
 // Async thunk to upload book photo
 export const uploadBookPhoto = createAsyncThunk(
   'bookDetails/uploadBookPhoto',
-  async ({ id, imageUrl }, { rejectWithValue }) => {
+  async ({ id, formData }, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`http://localhost:8080/book/uploadPhoto/${id}`, {
-        photoUrl: imageUrl,
+      const response = await axios.post(`http://localhost:8080/book/uploadPhoto/${id}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data', // Set proper content type for file upload
+        },
       });
       if (response.data.status === 'success') {
-        return imageUrl; // Return the updated image URL
+        return response.data.message; // Return the updated image URL from response
       } else {
         throw new Error('Failed to upload photo');
       }
