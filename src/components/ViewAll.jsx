@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchBooks, deleteBook } from "../features/booksSlice";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +14,8 @@ const BookList = () => {
   // Access Redux state
   const { items: books, loading } = useSelector((state) => state.books);
 
-  const [currentPage, setCurrentPage] = React.useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [successMessage, setSuccessMessage] = useState("");  // State for success message
   const itemsPerPage = 10;
 
   useEffect(() => {
@@ -23,6 +24,10 @@ const BookList = () => {
 
   const handleDelete = (id) => {
     dispatch(deleteBook(id));
+    setSuccessMessage("Book deleted successfully!");  // Show success message
+    setTimeout(() => {
+      setSuccessMessage("");  // Hide the message after 3 seconds
+    }, 3000);
   };
 
   const currentBooks = books.slice(
@@ -47,6 +52,14 @@ const BookList = () => {
       <Header />
       <div className="container mt-5">
         <h2 className="text-center mb-4">Book List</h2>
+        
+        {/* Show success message */}
+        {successMessage && (
+          <div className="alert alert-success" role="alert">
+            {successMessage}
+          </div>
+        )}
+
         <table className="table table-hover table-bordered custom-table">
           <thead className="table-primary">
             <tr>
