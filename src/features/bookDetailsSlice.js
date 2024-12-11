@@ -1,13 +1,14 @@
 // src/features/bookDetailsSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 // Async thunk to fetch book details
 export const fetchBookDetails = createAsyncThunk(
   'bookDetails/fetchBookDetails',
   async (id, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`http://54.208.218.69:8080/book/${id}`);
+      const response = await axios.get(`${API_BASE_URL}/book/${id}`);
       if (response.data.status === 'success') {
         return response.data.o; // Return book details
       } else {
@@ -25,7 +26,7 @@ export const uploadBookPhoto = createAsyncThunk(
   'bookDetails/uploadBookPhoto',
   async ({ id, formData }, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`http://54.208.218.69:8080/book/uploadPhoto/${id}`, formData, {
+      const response = await axios.post(`${API_BASE_URL}/book/uploadPhoto/${id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data', // Set proper content type for file upload
         },
