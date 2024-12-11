@@ -1,7 +1,7 @@
 // src/features/bookDetailsSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+const API_BASE_URL = 'http://184.73.124.211'; 
 
 // Async thunk to fetch book details
 export const fetchBookDetails = createAsyncThunk(

@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+const API_BASE_URL = 'http://184.73.124.211'; 
 
 // Thunks for adding, fetching, and deleting books
 export const addBook = createAsyncThunk(
