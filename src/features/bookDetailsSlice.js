@@ -7,7 +7,7 @@ export const fetchBookDetails = createAsyncThunk(
   'bookDetails/fetchBookDetails',
   async (id, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`http://localhost:8080/book/${id}`);
+      const response = await axios.get(`http://54.208.218.69:8080/book/${id}`);
       if (response.data.status === 'success') {
         return response.data.o; // Return book details
       } else {
@@ -25,7 +25,7 @@ export const uploadBookPhoto = createAsyncThunk(
   'bookDetails/uploadBookPhoto',
   async ({ id, formData }, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`http://localhost:8080/book/uploadPhoto/${id}`, formData, {
+      const response = await axios.post(`http://54.208.218.69:8080/book/uploadPhoto/${id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data', // Set proper content type for file upload
         },
