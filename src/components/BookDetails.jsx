@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchBookDetails, uploadBookPhoto } from "../features/bookDetailsSlice";
+import {
+  fetchBookDetails,
+  uploadBookPhoto,
+} from "../features/bookDetailsSlice";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/BookDetails.css";
 import Header from "./Header";
 import Footer from "./Footer";
 
 const BookDetails = () => {
+  useEffect(() => {
+    document.title = "Books App:  Book Details";
+  });
   const { id } = useParams(); // Get book ID from URL
   const navigate = useNavigate(); // For navigation
   const dispatch = useDispatch();
@@ -85,13 +91,8 @@ const BookDetails = () => {
   }
 
   const coverImage = book.photoUrl
-  ? `/images/upload/directory/${book.photoUrl.split('/').pop()}`
-  : "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg";
-
-
-
-
-
+    ? `/images/upload/directory/${book.photoUrl.split("/").pop()}`
+    : "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg";
 
   return (
     <div>
@@ -119,7 +120,10 @@ const BookDetails = () => {
               {new Date(book.publicationDate).toLocaleDateString("en-GB")}
             </p>
             <div className="text-center mt-4">
-              <button className="btn btn-primary btn-lg" onClick={() => navigate("/viewAll")}>
+              <button
+                className="btn btn-primary btn-lg"
+                onClick={() => navigate("/viewAll")}
+              >
                 Back to List
               </button>
             </div>
@@ -134,12 +138,20 @@ const BookDetails = () => {
 
       {/* Modal for uploading photo */}
       {showModal && (
-        <div className="modal show" style={{ display: "block" }} onClick={handleCloseModal}>
+        <div
+          className="modal show"
+          style={{ display: "block" }}
+          onClick={handleCloseModal}
+        >
           <div className="modal-dialog" onClick={(e) => e.stopPropagation()}>
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title">Upload Book Cover Photo</h5>
-                <button type="button" className="close" onClick={handleCloseModal}>
+                <button
+                  type="button"
+                  className="close"
+                  onClick={handleCloseModal}
+                >
                   <span>&times;</span>
                 </button>
               </div>
@@ -156,7 +168,11 @@ const BookDetails = () => {
                     />
                   </div>
                   <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" onClick={handleCloseModal}>
+                    <button
+                      type="button"
+                      className="btn btn-secondary"
+                      onClick={handleCloseModal}
+                    >
                       Close
                     </button>
                     <button type="submit" className="btn btn-primary">

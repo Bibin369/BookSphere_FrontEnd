@@ -15,8 +15,12 @@ const BookList = () => {
   const { items: books, loading } = useSelector((state) => state.books);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [successMessage, setSuccessMessage] = useState("");  // State for success message
+  const [successMessage, setSuccessMessage] = useState(""); // State for success message
   const itemsPerPage = 10;
+
+  useEffect(() => {
+    document.title = "Books App:  BookList";
+  });
 
   useEffect(() => {
     dispatch(fetchBooks());
@@ -24,9 +28,9 @@ const BookList = () => {
 
   const handleDelete = (id) => {
     dispatch(deleteBook(id));
-    setSuccessMessage("Book deleted successfully!");  // Show success message
+    setSuccessMessage("Book deleted successfully!"); // Show success message
     setTimeout(() => {
-      setSuccessMessage("");  // Hide the message after 3 seconds
+      setSuccessMessage(""); // Hide the message after 3 seconds
     }, 3000);
   };
 
@@ -52,7 +56,7 @@ const BookList = () => {
       <Header />
       <div className="container mt-5">
         <h2 className="text-center mb-4">Book List</h2>
-        
+
         {/* Show success message */}
         {successMessage && (
           <div className="alert alert-success" role="alert">

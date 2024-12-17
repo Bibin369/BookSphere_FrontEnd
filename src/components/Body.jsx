@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../styles/body.css";
 
 const Body = () => {
+  useEffect(() => {
+    document.title = "Books App:  Home";
+  });
   return (
     <div className="d-flex justify-content-center mt-4">
       <div

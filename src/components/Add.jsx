@@ -11,6 +11,10 @@ const Add = () => {
   const bookStatus = useSelector((state) => state.books.status);
   const bookError = useSelector((state) => state.books.error);
 
+  useEffect(()=>{
+   document.title = "Books App: Add Book" 
+  })
+  
   const [bookData, setBookData] = useState({
     title: '',
     author: '',
